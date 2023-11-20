@@ -1,5 +1,7 @@
 # logs
 *.log
+/log/
+/raw/
 
 # checkpoint
 /summaries/
