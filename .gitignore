@@ -1,0 +1,10 @@
+# logs
+*.log
+
+# checkpoint
+/summaries/
+
+# os generated files
+.DS_Store
+.DS_Store?
+._*
