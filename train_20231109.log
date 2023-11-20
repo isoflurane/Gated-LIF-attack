@@ -1,0 +1,525 @@
+neuron: No module named 'cupy'
+spikingjelly.clock_driven.cu_kernel_opt: No module named 'cupy'
+spikingjelly.clock_driven.tensor_cache: No module named 'cupy'
+spikingjelly.clock_driven.spike_op: No module named 'cupy'
+Files already downloaded and verified
+Poison 5000 over 50000 samples (poisoning rate 0.1)
+Files already downloaded and verified
+Files already downloaded and verified
+Poison 10000 over 10000 samples (poisoning rate 1.0)
+load data successfully
+{'gate': [0.6, 0.8, 0.6], 'param': [0.25, 0.5, 0.0625, 0.5], 't': 6, 'static_gate': False, 'static_param': False, 'time_wise': False, 'soft_mode': True}
+ResBlock3x3
+ResBlock3x3
+ResBlock3x3
+ResBlock3x3
+ResBlock3x3
+ResBlock3x3
+ResBlock3x3
+ResBlock3x3
+steps:6 init-tau:0.25 aa:0.5 Vth:0.5
+randomized gate
+ResNet_18_stand_CW(
+  (conv1): Sequential(
+    (0): SeqToANNContainer(
+      (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): LIFSpike_CW()
+  )
+  (features): ModuleList(
+    (0): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): SeqToANNContainer(
+        (0): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (lif): LIFSpike_CW()
+    )
+    (1): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): SeqToANNContainer(
+        (0): tdBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (lif): LIFSpike_CW()
+    )
+    (2): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): tdBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (lif): LIFSpike_CW()
+    )
+    (3): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): SeqToANNContainer(
+        (0): tdBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (lif): LIFSpike_CW()
+    )
+    (4): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): tdBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (lif): LIFSpike_CW()
+    )
+    (5): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): SeqToANNContainer(
+        (0): tdBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (lif): LIFSpike_CW()
+    )
+    (6): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): tdBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (lif): LIFSpike_CW()
+    )
+    (7): BasicBlock_CW(
+      (body): Sequential(
+        (0): SeqToANNContainer(
+          (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (1): LIFSpike_CW()
+        (2): SeqToANNContainer(
+          (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (1): tdBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (downsample): SeqToANNContainer(
+        (0): tdBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (lif): LIFSpike_CW()
+    )
+  )
+  (globalave): SeqToANNContainer(
+    (0): AdaptiveAvgPool2d(output_size=(1, 1))
+  )
+  (lastave): Sequential(
+    (0): Linear(in_features=512, out_features=256, bias=False)
+    (1): Linear(in_features=256, out_features=10, bias=False)
+  )
+)
+the random seed is 9
+Train Epoch: 1 [0/50000 (0%)]	Loss: 2.302756	Top-1 = 0.000000	Top-5 = 0.034375	Time = 3.634773
+Train Epoch: 1 [320/50000 (1%)]	Loss: 0.049141	Top-1 = 1.000000	Top-5 = 1.000000	Time = 7.472869
+Train Epoch: 1 [640/50000 (1%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 11.332649
+Train Epoch: 1 [960/50000 (2%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 15.190475
+Train Epoch: 1 [1280/50000 (3%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 19.040454
+Train Epoch: 1 [1600/50000 (3%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 22.955294
+Train Epoch: 1 [1920/50000 (4%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 26.814873
+Train Epoch: 1 [2240/50000 (4%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 30.673902
+Train Epoch: 1 [2560/50000 (5%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 34.584615
+Train Epoch: 1 [2880/50000 (6%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 38.515217
+Train Epoch: 1 [3200/50000 (6%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 42.404068
+Train Epoch: 1 [3520/50000 (7%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 46.342645
+Train Epoch: 1 [3840/50000 (8%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 50.314641
+Train Epoch: 1 [4160/50000 (8%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 54.338746
+Train Epoch: 1 [4480/50000 (9%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 58.359080
+Train Epoch: 1 [4800/50000 (10%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 62.375342
+Train Epoch: 1 [5120/50000 (10%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 66.409893
+Train Epoch: 1 [5440/50000 (11%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 70.492128
+Train Epoch: 1 [5760/50000 (12%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 74.589935
+Train Epoch: 1 [6080/50000 (12%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 78.671489
+Train Epoch: 1 [6400/50000 (13%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 82.762416
+Train Epoch: 1 [6720/50000 (13%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 86.865804
+Train Epoch: 1 [7040/50000 (14%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 90.924424
+Train Epoch: 1 [7360/50000 (15%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 95.020359
+Train Epoch: 1 [7680/50000 (15%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 99.106053
+Train Epoch: 1 [8000/50000 (16%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 103.205534
+Train Epoch: 1 [8320/50000 (17%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 107.308105
+Train Epoch: 1 [8640/50000 (17%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 111.403707
+Train Epoch: 1 [8960/50000 (18%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 115.585953
+Train Epoch: 1 [9280/50000 (19%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 119.681154
+Train Epoch: 1 [9600/50000 (19%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 123.785185
+Train Epoch: 1 [9920/50000 (20%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 127.917118
+Train Epoch: 1 [10240/50000 (20%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 132.025425
+Train Epoch: 1 [10560/50000 (21%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 136.150660
+Train Epoch: 1 [10880/50000 (22%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 140.245533
+Train Epoch: 1 [11200/50000 (22%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 144.417651
+Train Epoch: 1 [11520/50000 (23%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 148.539592
+Train Epoch: 1 [11840/50000 (24%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 152.674258
+Train Epoch: 1 [12160/50000 (24%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 156.799135
+Train Epoch: 1 [12480/50000 (25%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 160.917747
+Train Epoch: 1 [12800/50000 (26%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 165.034941
+Train Epoch: 1 [13120/50000 (26%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 169.201306
+Train Epoch: 1 [13440/50000 (27%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 173.417647
+Train Epoch: 1 [13760/50000 (28%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 177.580261
+Train Epoch: 1 [14080/50000 (28%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 181.759569
+Train Epoch: 1 [14400/50000 (29%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 185.977943
+Train Epoch: 1 [14720/50000 (29%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 190.148853
+Train Epoch: 1 [15040/50000 (30%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 194.305271
+Train Epoch: 1 [15360/50000 (31%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 198.446311
+Train Epoch: 1 [15680/50000 (31%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 202.584970
+Train Epoch: 1 [16000/50000 (32%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 206.796012
+Train Epoch: 1 [16320/50000 (33%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 211.016302
+Train Epoch: 1 [16640/50000 (33%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 215.249443
+Train Epoch: 1 [16960/50000 (34%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 219.396411
+Train Epoch: 1 [17280/50000 (35%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 223.621602
+Train Epoch: 1 [17600/50000 (35%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 227.769458
+Train Epoch: 1 [17920/50000 (36%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 231.981749
+Train Epoch: 1 [18240/50000 (36%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 236.192894
+Train Epoch: 1 [18560/50000 (37%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 240.367147
+Train Epoch: 1 [18880/50000 (38%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 244.608748
+Train Epoch: 1 [19200/50000 (38%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 248.788967
+Train Epoch: 1 [19520/50000 (39%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 252.977776
+Train Epoch: 1 [19840/50000 (40%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 257.156839
+Train Epoch: 1 [20160/50000 (40%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 261.369171
+Train Epoch: 1 [20480/50000 (41%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 265.539887
+Train Epoch: 1 [20800/50000 (42%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 269.737429
+Train Epoch: 1 [21120/50000 (42%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 273.905196
+Train Epoch: 1 [21440/50000 (43%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 278.150015
+Train Epoch: 1 [21760/50000 (44%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 282.309734
+Train Epoch: 1 [22080/50000 (44%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 286.496331
+Train Epoch: 1 [22400/50000 (45%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 290.707348
+Train Epoch: 1 [22720/50000 (45%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 294.883129
+Train Epoch: 1 [23040/50000 (46%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 299.050783
+Train Epoch: 1 [23360/50000 (47%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 303.217452
+Train Epoch: 1 [23680/50000 (47%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 307.385830
+Train Epoch: 1 [24000/50000 (48%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 311.562798
+Train Epoch: 1 [24320/50000 (49%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 315.740759
+Train Epoch: 1 [24640/50000 (49%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 319.915106
+Train Epoch: 1 [24960/50000 (50%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 324.090301
+Train Epoch: 1 [25280/50000 (51%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 328.292975
+Train Epoch: 1 [25600/50000 (51%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 332.470641
+Train Epoch: 1 [25920/50000 (52%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 336.639410
+Train Epoch: 1 [26240/50000 (52%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 340.803860
+Train Epoch: 1 [26560/50000 (53%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 344.950584
+Train Epoch: 1 [26880/50000 (54%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 349.156056
+Train Epoch: 1 [27200/50000 (54%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 353.349735
+Train Epoch: 1 [27520/50000 (55%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 357.512324
+Train Epoch: 1 [27840/50000 (56%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 361.733500
+Train Epoch: 1 [28160/50000 (56%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 365.881753
+Train Epoch: 1 [28480/50000 (57%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 370.072643
+Train Epoch: 1 [28800/50000 (58%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 374.218910
+Train Epoch: 1 [29120/50000 (58%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 378.344218
+Train Epoch: 1 [29440/50000 (59%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 382.524155
+Train Epoch: 1 [29760/50000 (60%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 386.689116
+Train Epoch: 1 [30080/50000 (60%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 390.837263
+Train Epoch: 1 [30400/50000 (61%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 394.984157
+Train Epoch: 1 [30720/50000 (61%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 399.123707
+Train Epoch: 1 [31040/50000 (62%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 403.265906
+Train Epoch: 1 [31360/50000 (63%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 407.412371
+Train Epoch: 1 [31680/50000 (63%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 411.567305
+Train Epoch: 1 [32000/50000 (64%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 415.743985
+Train Epoch: 1 [32320/50000 (65%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 419.899388
+Train Epoch: 1 [32640/50000 (65%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 424.110574
+Train Epoch: 1 [32960/50000 (66%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 428.255144
+Train Epoch: 1 [33280/50000 (67%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 432.365005
+Train Epoch: 1 [33600/50000 (67%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 436.519065
+Train Epoch: 1 [33920/50000 (68%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 440.668394
+Train Epoch: 1 [34240/50000 (68%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 444.813417
+Train Epoch: 1 [34560/50000 (69%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 448.968382
+Train Epoch: 1 [34880/50000 (70%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 453.115969
+Train Epoch: 1 [35200/50000 (70%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 457.258854
+Train Epoch: 1 [35520/50000 (71%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 461.382686
+Train Epoch: 1 [35840/50000 (72%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 465.519839
+Train Epoch: 1 [36160/50000 (72%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 469.655328
+Train Epoch: 1 [36480/50000 (73%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 473.822988
+Train Epoch: 1 [36800/50000 (74%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 477.937506
+Train Epoch: 1 [37120/50000 (74%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 482.074976
+Train Epoch: 1 [37440/50000 (75%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 486.197017
+Train Epoch: 1 [37760/50000 (75%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 490.314351
+Train Epoch: 1 [38080/50000 (76%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 494.413503
+Train Epoch: 1 [38400/50000 (77%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 498.521068
+Train Epoch: 1 [38720/50000 (77%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 502.690043
+Train Epoch: 1 [39040/50000 (78%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 506.799125
+Train Epoch: 1 [39360/50000 (79%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 510.918859
+Train Epoch: 1 [39680/50000 (79%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 515.032658
+Train Epoch: 1 [40000/50000 (80%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 519.128327
+Train Epoch: 1 [40320/50000 (81%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 523.225365
+Train Epoch: 1 [40640/50000 (81%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 527.342447
+Train Epoch: 1 [40960/50000 (82%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 531.487701
+Train Epoch: 1 [41280/50000 (83%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 535.668406
+Train Epoch: 1 [41600/50000 (83%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 539.800023
+Train Epoch: 1 [41920/50000 (84%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 543.911320
+Train Epoch: 1 [42240/50000 (84%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 548.039492
+Train Epoch: 1 [42560/50000 (85%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 552.139872
+Train Epoch: 1 [42880/50000 (86%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 556.252998
+Train Epoch: 1 [43200/50000 (86%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 560.344078
+Train Epoch: 1 [43520/50000 (87%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 564.479251
+Train Epoch: 1 [43840/50000 (88%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 568.638209
+Train Epoch: 1 [44160/50000 (88%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 572.734632
+Train Epoch: 1 [44480/50000 (89%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 576.845008
+Train Epoch: 1 [44800/50000 (90%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 580.948052
+Train Epoch: 1 [45120/50000 (90%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 585.050106
+Train Epoch: 1 [45440/50000 (91%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 589.166176
+Train Epoch: 1 [45760/50000 (91%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 593.319157
+Train Epoch: 1 [46080/50000 (92%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 597.456639
+Train Epoch: 1 [46400/50000 (93%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 601.620578
+Train Epoch: 1 [46720/50000 (93%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 605.725556
+Train Epoch: 1 [47040/50000 (94%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 609.814754
+Train Epoch: 1 [47360/50000 (95%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 613.920253
+Train Epoch: 1 [47680/50000 (95%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 618.003258
+Train Epoch: 1 [48000/50000 (96%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 622.105164
+Train Epoch: 1 [48320/50000 (97%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 626.208834
+Train Epoch: 1 [48640/50000 (97%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 630.305383
+Train Epoch: 1 [48960/50000 (98%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 634.387583
+Train Epoch: 1 [49280/50000 (99%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 638.452469
+Train Epoch: 1 [49600/50000 (99%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 642.517985
+Train Epoch: 1 [49920/50000 (100%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 646.616443
+time used in the epoch:647.4520094394684
+[09 09:48:50] TEST FOR CLEAN DATA:
+[09 09:49:20] TEST Epoch 1: loss = 37.243897,	Top-1  = 0.100000,	Top-5  = 0.500000,	val_time = 30.614494
+
+saving...
+best acc is 0.1 found in epoch 1
+[09 09:49:20] TEST FOR POISONED DATA:
+[09 09:49:52] TEST Epoch 1: loss = 0.000000,	Top-1  = 1.000000,	Top-5  = 1.000000,	val_time = 31.461746
+
+saving...
+best acc is 1.0 found in epoch 1
+and lr now is [0.1, 0.1, 0.01]
+Train Epoch: 2 [0/50000 (0%)]	Loss: 0.000000	Top-1 = 0.100000	Top-5 = 0.100000	Time = 2.112004
+Train Epoch: 2 [320/50000 (1%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 6.150271
+Train Epoch: 2 [640/50000 (1%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 10.192797
+Train Epoch: 2 [960/50000 (2%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 14.238611
+Train Epoch: 2 [1280/50000 (3%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 18.289398
+Train Epoch: 2 [1600/50000 (3%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 22.334977
+Train Epoch: 2 [1920/50000 (4%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 26.400951
+Train Epoch: 2 [2240/50000 (4%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 30.441117
+Train Epoch: 2 [2560/50000 (5%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 34.542810
+Train Epoch: 2 [2880/50000 (6%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 38.657606
+Train Epoch: 2 [3200/50000 (6%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 42.726060
+Train Epoch: 2 [3520/50000 (7%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 46.800457
+Train Epoch: 2 [3840/50000 (8%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 50.883196
+Train Epoch: 2 [4160/50000 (8%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 54.975502
+Train Epoch: 2 [4480/50000 (9%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 59.074941
+Train Epoch: 2 [4800/50000 (10%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 63.167584
+Train Epoch: 2 [5120/50000 (10%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 67.215044
+Train Epoch: 2 [5440/50000 (11%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 71.314273
+Train Epoch: 2 [5760/50000 (12%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 75.419119
+Train Epoch: 2 [6080/50000 (12%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 79.478208
+Train Epoch: 2 [6400/50000 (13%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 83.559637
+Train Epoch: 2 [6720/50000 (13%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 87.642302
+Train Epoch: 2 [7040/50000 (14%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 91.698666
+Train Epoch: 2 [7360/50000 (15%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 95.799472
+Train Epoch: 2 [7680/50000 (15%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 99.849320
+Train Epoch: 2 [8000/50000 (16%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 103.924262
+Train Epoch: 2 [8320/50000 (17%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 107.978548
+Train Epoch: 2 [8640/50000 (17%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 112.072237
+Train Epoch: 2 [8960/50000 (18%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 116.125632
+Train Epoch: 2 [9280/50000 (19%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 120.233195
+Train Epoch: 2 [9600/50000 (19%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 124.295123
+Train Epoch: 2 [9920/50000 (20%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 128.338762
+Train Epoch: 2 [10240/50000 (20%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 132.402270
+Train Epoch: 2 [10560/50000 (21%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 136.450402
+Train Epoch: 2 [10880/50000 (22%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 140.542905
+Train Epoch: 2 [11200/50000 (22%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 144.680883
+Train Epoch: 2 [11520/50000 (23%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 148.774760
+Train Epoch: 2 [11840/50000 (24%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 152.825985
+Train Epoch: 2 [12160/50000 (24%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 156.884575
+Train Epoch: 2 [12480/50000 (25%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 160.971827
+Train Epoch: 2 [12800/50000 (26%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 165.037182
+Train Epoch: 2 [13120/50000 (26%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 169.108772
+Train Epoch: 2 [13440/50000 (27%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 173.170520
+Train Epoch: 2 [13760/50000 (28%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 177.234342
+Train Epoch: 2 [14080/50000 (28%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 181.337865
+Train Epoch: 2 [14400/50000 (29%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 185.411235
+Train Epoch: 2 [14720/50000 (29%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 189.487434
+Train Epoch: 2 [15040/50000 (30%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 193.551606
+Train Epoch: 2 [15360/50000 (31%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 197.659358
+Train Epoch: 2 [15680/50000 (31%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 201.753653
+Train Epoch: 2 [16000/50000 (32%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 205.828567
+Train Epoch: 2 [16320/50000 (33%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 209.930862
+Train Epoch: 2 [16640/50000 (33%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 214.109827
+Train Epoch: 2 [16960/50000 (34%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 218.221559
+Train Epoch: 2 [17280/50000 (35%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 222.313720
+Train Epoch: 2 [17600/50000 (35%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 226.417223
+Train Epoch: 2 [17920/50000 (36%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 230.508005
+Train Epoch: 2 [18240/50000 (36%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 234.581438
+Train Epoch: 2 [18560/50000 (37%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 238.739012
+Train Epoch: 2 [18880/50000 (38%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 242.836671
+Train Epoch: 2 [19200/50000 (38%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 246.938988
+Train Epoch: 2 [19520/50000 (39%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 251.031247
+Train Epoch: 2 [19840/50000 (40%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 255.138454
+Train Epoch: 2 [20160/50000 (40%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 259.251378
+Train Epoch: 2 [20480/50000 (41%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 263.340227
+Train Epoch: 2 [20800/50000 (42%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 267.448880
+Train Epoch: 2 [21120/50000 (42%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 271.579937
+Train Epoch: 2 [21440/50000 (43%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 275.672256
+Train Epoch: 2 [21760/50000 (44%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 279.827399
+Train Epoch: 2 [22080/50000 (44%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 283.951811
+Train Epoch: 2 [22400/50000 (45%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 288.150894
+Train Epoch: 2 [22720/50000 (45%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 292.284325
+Train Epoch: 2 [23040/50000 (46%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 296.379935
+Train Epoch: 2 [23360/50000 (47%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 300.498951
+Train Epoch: 2 [23680/50000 (47%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 304.610173
+Train Epoch: 2 [24000/50000 (48%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 308.720798
+Train Epoch: 2 [24320/50000 (49%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 312.863103
+Train Epoch: 2 [24640/50000 (49%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 316.978322
+Train Epoch: 2 [24960/50000 (50%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 321.099443
+Train Epoch: 2 [25280/50000 (51%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 325.230494
+Train Epoch: 2 [25600/50000 (51%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 329.350502
+Train Epoch: 2 [25920/50000 (52%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 333.498825
+Train Epoch: 2 [26240/50000 (52%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 337.609195
+Train Epoch: 2 [26560/50000 (53%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 341.752222
+Train Epoch: 2 [26880/50000 (54%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 345.893794
+Train Epoch: 2 [27200/50000 (54%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 350.050787
+Train Epoch: 2 [27520/50000 (55%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 354.180111
+Train Epoch: 2 [27840/50000 (56%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 358.398601
+Train Epoch: 2 [28160/50000 (56%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 362.554881
+Train Epoch: 2 [28480/50000 (57%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 366.653629
+Train Epoch: 2 [28800/50000 (58%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 370.892594
+Train Epoch: 2 [29120/50000 (58%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 375.066339
+Train Epoch: 2 [29440/50000 (59%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 379.198498
+Train Epoch: 2 [29760/50000 (60%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 383.354403
+Train Epoch: 2 [30080/50000 (60%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 387.507352
+Train Epoch: 2 [30400/50000 (61%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 391.605350
+Train Epoch: 2 [30720/50000 (61%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 395.830248
+Train Epoch: 2 [31040/50000 (62%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 399.965657
+Train Epoch: 2 [31360/50000 (63%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 404.115660
+Train Epoch: 2 [31680/50000 (63%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 408.256349
+Train Epoch: 2 [32000/50000 (64%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 412.418945
+Train Epoch: 2 [32320/50000 (65%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 416.627484
+Train Epoch: 2 [32640/50000 (65%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 420.799390
+Train Epoch: 2 [32960/50000 (66%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 424.971386
+Train Epoch: 2 [33280/50000 (67%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 429.142281
+Train Epoch: 2 [33600/50000 (67%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 433.308035
+Train Epoch: 2 [33920/50000 (68%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 437.488867
+Train Epoch: 2 [34240/50000 (68%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 441.688369
+Train Epoch: 2 [34560/50000 (69%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 445.857594
+Train Epoch: 2 [34880/50000 (70%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 450.036339
+Train Epoch: 2 [35200/50000 (70%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 454.291799
+Train Epoch: 2 [35520/50000 (71%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 458.445064
+Train Epoch: 2 [35840/50000 (72%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 462.608833
+Train Epoch: 2 [36160/50000 (72%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 466.771766
+Train Epoch: 2 [36480/50000 (73%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 470.954283
+Train Epoch: 2 [36800/50000 (74%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 475.129840
+Train Epoch: 2 [37120/50000 (74%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 479.366158
+Train Epoch: 2 [37440/50000 (75%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 483.551361
+Train Epoch: 2 [37760/50000 (75%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 487.774082
+Train Epoch: 2 [38080/50000 (76%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 491.918991
+Train Epoch: 2 [38400/50000 (77%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 496.159634
+Train Epoch: 2 [38720/50000 (77%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 500.312384
+Train Epoch: 2 [39040/50000 (78%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 504.509570
+Train Epoch: 2 [39360/50000 (79%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 508.663655
+Train Epoch: 2 [39680/50000 (79%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 512.890037
+Train Epoch: 2 [40000/50000 (80%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 517.068837
+Train Epoch: 2 [40320/50000 (81%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 521.296230
+Train Epoch: 2 [40640/50000 (81%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 525.468145
+Train Epoch: 2 [40960/50000 (82%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 529.700304
+Train Epoch: 2 [41280/50000 (83%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 533.924015
+Train Epoch: 2 [41600/50000 (83%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 538.080678
+Train Epoch: 2 [41920/50000 (84%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 542.256872
+Train Epoch: 2 [42240/50000 (84%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 546.472458
+Train Epoch: 2 [42560/50000 (85%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 550.609373
+Train Epoch: 2 [42880/50000 (86%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 554.776133
+Train Epoch: 2 [43200/50000 (86%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 558.944555
+Train Epoch: 2 [43520/50000 (87%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 563.091345
+Train Epoch: 2 [43840/50000 (88%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 567.256485
+Train Epoch: 2 [44160/50000 (88%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 571.419992
+Train Epoch: 2 [44480/50000 (89%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 575.604896
+Train Epoch: 2 [44800/50000 (90%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 579.790926
+Train Epoch: 2 [45120/50000 (90%)]	Loss: 0.000002	Top-1 = 1.000000	Top-5 = 1.000000	Time = 583.910997
+Train Epoch: 2 [45440/50000 (91%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 588.081471
+Train Epoch: 2 [45760/50000 (91%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 592.345212
+Train Epoch: 2 [46080/50000 (92%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 596.482924
+Train Epoch: 2 [46400/50000 (93%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 600.713609
+Train Epoch: 2 [46720/50000 (93%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 604.877891
+Train Epoch: 2 [47040/50000 (94%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 609.016720
+Train Epoch: 2 [47360/50000 (95%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 613.145762
+Train Epoch: 2 [47680/50000 (95%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 617.279166
+Train Epoch: 2 [48000/50000 (96%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 621.413388
+Train Epoch: 2 [48320/50000 (97%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 625.582034
+Train Epoch: 2 [48640/50000 (97%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 629.695287
+Train Epoch: 2 [48960/50000 (98%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 633.840103
+Train Epoch: 2 [49280/50000 (99%)]	Loss: 0.000001	Top-1 = 1.000000	Top-5 = 1.000000	Time = 638.003464
+Train Epoch: 2 [49600/50000 (99%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 642.124387
+Train Epoch: 2 [49920/50000 (100%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 646.264362
+time used in the epoch:647.074277639389
+[09 10:00:39] TEST FOR CLEAN DATA:
+[09 10:01:10] TEST Epoch 2: loss = 25.190615,	Top-1  = 0.100000,	Top-5  = 0.500000,	val_time = 30.963241
+
+best acc is 0.1 found in epoch 1
+[09 10:01:10] TEST FOR POISONED DATA:
+[09 10:01:42] TEST Epoch 2: loss = 0.000007,	Top-1  = 1.000000,	Top-5  = 1.000000,	val_time = 31.789447
+
+best acc is 1.0 found in epoch 1
+and lr now is [0.09999383162408304, 0.09999383162408304, 0.009999383162408303]
+Train Epoch: 3 [0/50000 (0%)]	Loss: 0.000000	Top-1 = 0.100000	Top-5 = 0.100000	Time = 2.070437
+Train Epoch: 3 [320/50000 (1%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 6.131542
+Train Epoch: 3 [640/50000 (1%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 10.261737
+Train Epoch: 3 [960/50000 (2%)]	Loss: 0.000000	Top-1 = 1.000000	Top-5 = 1.000000	Time = 14.357158

@@ -4,6 +4,7 @@ from torch.utils.data import DataLoader
 import torchvision.datasets as datasets
 from torchvision.datasets import CIFAR10, CIFAR100, ImageFolder
 from data.autoaugment import CIFAR10Policy, Cutout
+from data.poisoned_dataset import CIFAR10Poison
 import torch
 
 ####################################################
@@ -11,6 +12,7 @@ import torch
 #                                                  #
 ####################################################
 
+# build clean dataset, return data_loader
 def build_data(dpath: str = None, batch_size=36, cutout=False, workers=1, use_cifar10=True, auto_aug=False,
                dataset='CIFAR10', train_val_split=True, imagenet_train_dir=None, imagenet_val_dir=None):
 
@@ -222,5 +224,67 @@ def build_data(dpath: str = None, batch_size=36, cutout=False, workers=1, use_ci
             test_loader = None
     return train_loader, val_loader, test_loader
 
+# build poisoned training dataset for CIFAR10, return data_loader
+def build_poisoned_training_data(args, dpath: str = None, batch_size=36, cutout=False, workers=1, use_cifar10=True, auto_aug=False,
+               dataset='CIFAR10', train_val_split=True, imagenet_train_dir=None, imagenet_val_dir=None):
+    if dataset == 'CIFAR10':
+        mean = [x / 255 for x in [125.3, 123.0, 113.9]]
+        std = [x / 255 for x in [63.0, 62.1, 66.7]]
+    else:
+        assert False, "Unknown dataset : {dataset}"
+    aug = [transforms.RandomCrop(32, padding=4), transforms.RandomHorizontalFlip()]
+    if auto_aug:
+        aug.append(CIFAR10Policy())
+    aug.append(transforms.ToTensor())
+    if cutout:
+        aug.append(Cutout(n_holes=1, length=16))
+    test_dataset = None
+    val_dataset = None
 
+    if (imagenet_train_dir is None or imagenet_val_dir is None) and dpath is None:
+        assert False, "Please input your dataset dir path via --dataset_path [dataset_dir] or " \
+                      "--train_dir [imagenet_train_dir] --val_dir [imagenet_train_dir]"
+
+    if use_cifar10:
+        transform_train = transforms.Compose([
+                             transforms.RandomCrop(32, padding=4),
+                             transforms.RandomHorizontalFlip(),
+                             transforms.ToTensor(),
+                             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261))
+                         ])
+        transform_test = transforms.Compose([
+                            transforms.ToTensor(),
+                            transforms.Normalize((0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261))
+                        ])
+        # use CIFAR10Poison to build train_poison_dataset, default poisonint_rate = 0.1
+        train_poison_dataset = CIFAR10Poison(args, root=dpath, train=True, download=True, transform=transform_train)
+        print(f"poisoning_rate for train_poison_dataset is: {args.poisoning_rate}")
+        # use CIFAR10 to build val_clean_dataset
+        val_clean_dataset = CIFAR10(root=dpath, train=False, download=True, transform=transform_test)
+        if train_val_split:
+            train_poison_dataset, val_poison_dataset = torch.utils.data.random_split(train_poison_dataset, lengths=[40000, 10000],
+                                                                  generator=torch.Generator().manual_seed(42)
+                                                                  )
+            test_poison_dataset = CIFAR10Poison(args, root=dpath, train=False, download=True, transform=transform_test)
+        else:
+            val_poison_dataset = CIFAR10Poison(args, root=dpath, train=False, download=True, transform=transform_test)
+            print(f"poisoning_rate for val_poison_dataset is: {args.poisoning_rate}")
+    else:
+        raise NotImplementedError()
+
+
+    train_poison_loader = DataLoader(train_poison_dataset, batch_size=batch_size, shuffle=True,
+                                  num_workers=workers, pin_memory=True)
+    val_clean_loader = DataLoader(val_clean_dataset, batch_size=batch_size, shuffle=True,
+                                  num_workers=workers, pin_memory=True)
+    if train_val_split:
+        val_poison_loader = DataLoader(val_poison_dataset, batch_size=batch_size,
+                                shuffle=True, num_workers=workers, pin_memory=True)
+        test_poison_loader = DataLoader(test_poison_dataset, batch_size=batch_size,
+                                shuffle=False, num_workers=workers, pin_memory=True)
+    else:
+        val_poison_loader = DataLoader(val_poison_dataset, batch_size=batch_size,
+                                    shuffle=True, num_workers=workers, pin_memory=True)
+        test_poison_loader = None
+    return train_poison_loader, val_poison_loader, val_clean_loader
 

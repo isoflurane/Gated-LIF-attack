@@ -13,6 +13,7 @@ from torch.cuda import amp
 from schedulers import *
 from Regularization import *
 import random
+import matplotlib.pyplot as plt
 
 ####################################################
 # args                                             #
@@ -66,6 +67,12 @@ def get_args():
     #ResNet-34 is the default option for ImageNet.
     #To use any of the two models above, just clarify the task and DO NOT input any model commands. e.g., --stand18.
 
+    # poison settings
+    parser.add_argument('--poisoning_rate', type=float, default=0.1, help='poisoning portion (float, range from 0 to 1, default: 0.1)')
+    parser.add_argument('--trigger_label', type=int, default=1, help='The NO. of trigger label (int, range from 0 to 10, default: 0)')
+    parser.add_argument('--trigger_path', default='./triggers/trigger_white.png', help='Trigger Path (default: ./triggers/trigger_white.png)')
+    parser.add_argument('--trigger_size', type=int, default=5, help='Trigger Size (int, default: 5)')
+
     args = parser.parse_args()
 
     return args
@@ -117,6 +124,7 @@ def train(args, model, device, train_loader, optimizer, epoch, writer, criterion
             Top1, Top5 = 0.0, 0.0
     print('time used in the epoch:{}'.format(time.time() - t1))
 
+# test clean model
 def test(args, model, device, test_loader, epoch, writer, criterion, modeltag, dict_params, best= None):
     objs = AvgrageMeter()
     top1 = AvgrageMeter()
@@ -164,6 +172,16 @@ def test(args, model, device, test_loader, epoch, writer, criterion, modeltag, d
         writer.add_scalar('Test_Loss_/epoch', objs.avg, epoch)
         writer.add_scalar('Test_Acc_/epoch', top1.avg / 100, epoch)
 
+
+# test poisoned model
+def test_badnets(args, model, device, test_clean_loader, test_poison_loader, epoch, writer, criterion, modeltag, dict_params, best_acc=None, best_asr=None):
+    logInfo_clean = 'TEST FOR CLEAN DATA:'
+    logging.info(logInfo_clean)
+    test(args, model, device, test_clean_loader, epoch, writer, criterion, modeltag, dict_params, best_acc)
+    logInfo_poison = 'TEST FOR POISONED DATA:'
+    logging.info(logInfo_poison)
+    test(args, model, device, test_poison_loader, epoch, writer, criterion, modeltag, dict_params, best_asr)
+
 def seed_all(seed=1):
     random.seed(seed)
     os.environ['PYTHONHASHSEED'] = str(seed)
@@ -194,7 +212,8 @@ def main():
     fh.setFormatter(logging.Formatter(log_format))
     logging.getLogger().addHandler(fh)
 
-    epochs = 1#已经迭代的次数
+    # already iteraction times
+    epochs = 1
     initial_dict = {'gate': [0.6, 0.8, 0.6], 'param': [tau, Vth, linear_decay, conduct],
                    't': steps, 'static_gate': True, 'static_param': False, 'time_wise': True, 'soft_mode': False}
     initial_dict['gate'] = args.gate
@@ -221,8 +240,8 @@ def main():
                                                  batch_size=args.batch_size, train_val_split=False, workers=16)
     else:
         #use cifar10
-        train_loader, val_loader, _ = build_data(use_cifar10=True, dpath=args.dataset_path,
-                                              batch_size=args.batch_size, train_val_split=False, workers=16)
+        train_poison_loader, val_poison_loader, val_clean_loader = build_poisoned_training_data(args, use_cifar10=True, dpath=args.dataset_path,
+                                              batch_size=args.batch_size, train_val_split=True, workers=16)
     print('load data successfully')
 
     print(initial_dict)
@@ -352,7 +371,8 @@ def main():
             epochs += 1
 
 
-    best = {'acc': 0., 'epoch': 0}
+    best_acc = {'acc': 0., 'epoch': 0}
+    best_asr = {'acc': 0., 'epoch': 0}
 
     if args.eval:
         lastest_model = get_model(modeltag, addr=args.eval_resume)
@@ -371,8 +391,8 @@ def main():
                                                             find_unused_parameters=False)
             else:
                 model = model.to(device)
-            test(args, model, device, val_loader, epochs, writer, criterion=loss_function,
-                 modeltag=modeltag, best=best, dict_params=dict_params)
+            test_badnets(args, model, device, val_clean_loader, val_poison_loader, epochs, writer, criterion=loss_function,
+                 modeltag=modeltag, best_acc=best_acc, best_asr=best_asr, dict_params=dict_params)
         else:
             print('no model detected')
         exit(0)
@@ -396,11 +416,11 @@ def main():
         scaler = None
 
     while (epochs <= args.epochs):
-        train(args, model, device, train_loader, optimizer, epochs, writer, criterion=loss_function,
+        train(args, model, device, train_poison_loader, optimizer, epochs, writer, criterion=loss_function,
               scaler=scaler)
         if epochs % 1 == 0:
-            test(args, model, device, val_loader, epochs, writer, criterion=loss_function,
-                 modeltag=modeltag, best=best, dict_params=dict_params)
+            test_badnets(args, model, device, val_clean_loader, val_poison_loader, epochs, writer, criterion=loss_function,
+                 modeltag=modeltag, best_acc=best_acc, best_asr=best_asr, dict_params=dict_params)
         else:
             pass
         print('and lr now is {}'.format(scheduler.get_last_lr()))
